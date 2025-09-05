@@ -11,6 +11,7 @@ class Checker:
 
     @classmethod
     def is_good(cls, data):
+        print(f"DATA IS: {data}")
         name = data.get(cls.name_key)
         if type(name) == str and len(name) > 0:
             return cls.responses.get(name, None)
