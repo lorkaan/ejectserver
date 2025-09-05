@@ -24,8 +24,11 @@ def run():
     if request.is_json:
         data = request.json
         output_dict = {}
-        output_dict[output_key] = Checker.is_good(data)
-        return jsonify(output_dict), 200
+        try:
+            output_dict[output_key] = Checker.is_good(data)
+            return jsonify(output_dict), 200
+        except Exception as e:
+            return e, 500
     else:
         return "Expected JSON input", 400
 
