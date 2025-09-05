@@ -24,7 +24,7 @@ output_key = "result"
 def run():
     if request.is_json:
         try:
-            data = request.json
+            data = request.json()
             output_dict = {}
             output_dict[output_key] = Checker.is_good(data)
             return jsonify(output_dict), 200
