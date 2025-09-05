@@ -14,9 +14,9 @@ class Checker:
         print(f"DATA IS: {data}")
         name = data.get(cls.name_key)
         if type(name) == str and len(name) > 0:
-            return cls.responses.get(name, None)
+            return cls.responses.get(name, name)
         else:
-            return None
+            return data
 
 output_key = "result"
 
