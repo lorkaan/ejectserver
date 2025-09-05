@@ -20,11 +20,11 @@ class Checker:
 output_key = "result"
 
 @app.route('/', methods=['POST'])
-def run():
+def run(request):
     if request.is_json:
-        data = request.json
-        output_dict = {}
         try:
+            data = request.json
+            output_dict = {}
             output_dict[output_key] = Checker.is_good(data)
             return jsonify(output_dict), 200
         except Exception as e:
