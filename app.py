@@ -28,7 +28,10 @@ def run():
             output_dict[output_key] = Checker.is_good(data)
             return jsonify(output_dict), 200
         except Exception as e:
-            return e, 500
+            print(e)
+            output_dict = {}
+            output_dict[output_key] = Checker.is_good(request.form)
+            return jsonify(output_dict), 200
     else:
         return "Expected JSON input", 400
 
