@@ -19,7 +19,7 @@ class Checker:
 
 output_key = "result"
 
-@app.route('/', methods=['POST'])
+@app.route('/check', methods=['POST'])
 def run():
     if request.is_json:
         data = request.json()
