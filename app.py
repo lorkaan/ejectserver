@@ -22,7 +22,7 @@ output_key = "result"
 @app.route('/check', methods=['POST'])
 def run():
     if request.is_json:
-        data = request.json()
+        data = request.json
         output_dict = {}
         output_dict[output_key] = Checker.is_good(data)
         return jsonify(output_dict), 200
