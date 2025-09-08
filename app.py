@@ -11,28 +11,21 @@ class Checker:
 
     @classmethod
     def is_good(cls, data):
-        print(f"DATA IS: {data}")
         name = data.get(cls.name_key)
         if type(name) == str and len(name) > 0:
-            return cls.responses.get(name, name)
+            return cls.responses.get(name, f"NAME IS: {name}")
         else:
-            return data
+            return f"name is: {type(name)} => {name}"
 
 output_key = "result"
 
 @app.route('/', methods=['POST'])
 def run():
     if request.is_json:
-        try:
-            data = request.json()
-            output_dict = {}
-            output_dict[output_key] = Checker.is_good(data)
-            return jsonify(output_dict), 200
-        except Exception as e:
-            print(e)
-            output_dict = {}
-            output_dict[output_key] = Checker.is_good(request.form)
-            return jsonify(output_dict), 200
+        data = request.json()
+        output_dict = {}
+        output_dict[output_key] = Checker.is_good(data)
+        return jsonify(output_dict), 200
     else:
         return "Expected JSON input", 400
 
