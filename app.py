@@ -13,7 +13,7 @@ class Checker:
     def is_good(cls, data):
         name = data.get(cls.name_key)
         if type(name) == str and len(name) > 0:
-            return cls.responses.get(name, f"NAME IS: {name}")
+            return cls.responses.get(name, f"NAME IS: {name} => {type(name)}")
         else:
             return f"name is: {type(name)} => {name}"
 
